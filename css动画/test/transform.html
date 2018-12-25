@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    img{
+      width: 100px;
+      height: 200px;
+    }
+    #box{
+      -webkit-perspective: 800px;
+              perspective: 800px;
+      -webkit-perspective-origin: 50% 50%;
+              perspective-origin: 30% 50%;
+      -webkit-transform-style: preserve-3d;
+              transform-style: preserve-3d;
+      -webkit-transition: 5s infinite;
+      transition:  5s;
+      margin:100px 415px;
+    }
+    .wutai{
+      width: 100px;
+      height: 200px;
+      position: relative;
+      -webkit-transform-style: preserve-3d;
+              transform-style: preserve-3d;
+      float: left;
+      margin-left: -2px;
+
+    }
+    .mofang{
+      width: 100px;
+      height: 200px;
+      text-align: center;
+      line-height: 200px;
+      position: absolute;
+    }
+    .left{
+      width: 200px;
+      height: 200px;
+      -webkit-transform:rotateY(90deg)translateZ(-100px);
+              transform:rotateY(90deg)translateZ(-100px);
+      background-color: #000;
+    }
+    .right{
+      width: 200px;
+      height: 200px;
+      background-color: #000;
+      -webkit-transform:rotateY(90deg)translateZ(0px);
+              transform:rotateY(90deg)translateZ(0px);
+    }
+    .wutai:nth-of-type(2)>.mofang{
+      background-position:-100px 0px;
+    }
+    .wutai:nth-of-type(3)>.mofang{
+      background-position:-200px 0px;
+    }
+    .wutai:nth-of-type(4)>.mofang{
+      background-position:-300px 0px;
+    }
+    .wutai:nth-of-type(5)>.mofang{
+      background-position:-400px 0px;
+    }
+    .wutai:nth-of-type(6)>.mofang{
+      background-position:-500px 0px;
+    }
+    .top{
+      background-image:url(../imags/8.jpg);
+      -webkit-transform:rotateX(90deg)translateZ(100px)rotateZ(360deg);
+              transform:rotateX(90deg)translateZ(100px)rotateZ(360deg);
+      background-size: 500px 100%;
+    }
+    .buttom{
+      background-image:url(../imags/9.jpg);
+      -webkit-transform:rotateX(90deg)rotateX(180deg)translateZ(100px);
+              transform:rotateX(90deg)rotateX(180deg)translateZ(100px);
+      background-size: 500px 100%;
+    }
+    .hou{
+      background-image:url(../imags/10.jpg);
+      -webkit-transform:rotateX(180deg)translateZ(100px);
+              transform:rotateX(180deg)translateZ(100px);
+      background-size: 500px 100%;
+    }
+    .qian{
+      background-image:url(../imags/11.jpg);
+      -webkit-transform:rotateX(0deg)translateZ(100px);
+              transform:rotateX(0deg)translateZ(100px);
+      background-size: 500px 100%;
+    }
+
+  </style>
+  <script>
+    window.onload=function(){
+      var box=document.getElementById("box");
+      var wutai =box.getElementsByClassName("wutai");
+      var gs=5;//遍历的div
+      var neirong= '<div class="wutai"><div class="mofang qian"></div><div class="mofang hou"></div><div class="mofang left"></div><div class="mofang right"></div><div class="mofang top"></div><div class="mofang buttom"></div></div>';    //遍历的HTML
+      var dom="";
+      for(var i=0;i<gs;i++){
+        dom+=neirong;//循环遍历div的个数
+      }
+      box.innerHTML=dom;// 将遍历的div放入html中
+      var dian=0;
+      box.onclick=function(){
+        dian++;
+        var jiaodu=dian*90;
+        for(var i=0;i<gs;i++){
+          wutai[i].style="transition:transform 1s"+100*i+"ms;transform:rotateX("+jiaodu+"deg)";//设置延迟时间和旋转的度数
+          }
+      }
+      setInterval(function(){
+        dian++;
+        var jiaodu=dian*90;
+        for(var i=0;i<gs;i++){
+          wutai[i].style="transition:transform 1s"+100*i+"ms;transform:rotateX("+jiaodu+"deg)";
+          }
+      },3000)//设置计时器让dome自己运动起来
+    }
+  </script>
+</head>
+<body style="background-color:#23d19d">
+  <div id="box"></div>
+</body>
+</html>

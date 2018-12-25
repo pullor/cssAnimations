@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>Document</title>
+<style>
+
+    html{
+        /* background:linear-gradient(#9ed128 0%,#358b98 80%); */
+        opacity: 0.8;
+        height: 100%;
+    }
+    .container{
+        /* margin-top: 200px; */
+        perspective:2400px;
+        overflow: hidden;
+    }
+    .cube{
+        height: 800px;
+        width: 800px;
+        position: relative;
+        margin:auto;
+        transform-style:preserve-3d;/*定义3d转换*/
+        animation:rotate 10s infinite linear; 
+        /* animation：动画名字 时长 无限循环 线性速度（匀速） */
+    }
+    @keyframes rotate{
+        from{
+            transfrom: rotateY(0deg) /* rotateX(0deg) */;
+            /* transform-origin:60% 60% 0; */
+        }
+        to{
+            transform: rotateY(360deg) /* rotateX(360deg)*/;
+            /* transform-origin:60% 60% 0; */
+        }
+    }
+    .pagediv{
+        height: 100%;
+        width: 100%;
+        opacity: 0.9;
+        position: absolute;
+        text-align: center;
+        background: #333;
+        color:#fff;
+        line-height: 200px;
+        font-size: 30px;
+        border:1px solid #fff;
+        backface-visibility:hidden;
+    }
+    .around{
+    height: 600px
+    }
+    .plane-front{
+        transform:translateZ(400px) rotateY(180deg);
+    }
+    .plane-back{
+        transform:translateZ(-400px);
+    }
+    .plane-left{
+        transform:rotateY(90deg) translateZ(-400px);
+    }
+    .plane-right{
+        transform:rotateY(270deg) translateZ(-400px);
+    }
+    .plane-top{
+        transform:rotateX(270deg) translateZ(-400px);
+    }
+    .plane-bottom{
+        transform:rotateX(90deg) translateZ(-200px);
+    }
+</style>
+</head>
+<body>
+<div class="container">
+    <!--包裹六个面的元素-->
+    <div class="cube">
+        <!--立方体的六个面-->
+        <div class="pagediv plane-front around">前面</div>
+        <div class="pagediv plane-back around">后面</div>
+        <div class="pagediv plane-left around">左面</div>
+        <div class="pagediv plane-right around">右面</div>
+        <div class="pagediv plane-top" style="background: url(../images/img01.png);background-size: 100% 100%;">上面</div>
+        <div class="pagediv plane-bottom">下面</div>
+    </div>
+</div>
+
+</body>
+</html>
